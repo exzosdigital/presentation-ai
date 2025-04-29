@@ -57,6 +57,7 @@
     "@radix-ui/react-toggle-group": "^1.1.1",
     "@radix-ui/react-toolbar": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.1.7",
+    "@spider-rs/spider-rs": "^0.0.157",
     "@t3-oss/env-nextjs": "^0.10.1",
     "@tanstack/react-query": "^5.65.1",
     "@types/lodash.debounce": "^4.0.9",

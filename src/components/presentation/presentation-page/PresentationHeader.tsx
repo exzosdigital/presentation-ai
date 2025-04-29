@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Spider } from "lucide-react";
 import { usePresentationState } from "@/states/presentation-state";
 import { usePathname } from "next/navigation";
 
@@ -12,6 +12,15 @@ import { PresentButton } from "./buttons/PresentButton";
 import { SaveStatus } from "./buttons/SaveStatus";
 import { Brain } from "@/components/ui/icons";
 import SideBarDropdown from "@/components/auth/Dropdown";
+
+// Import dropdown menu components
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 interface PresentationHeaderProps {
   title?: string;
@@ -53,6 +62,25 @@ export default function PresentationHeader({ title }: PresentationHeaderProps) {
 
         {/* Theme selector - Only in presentation page, not outline */}
         {isPresentationPage && <ThemeSelector />}
+
+        {/* Tools dropdown menu */}
+        {!isPresenting && (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="sm">
+                Tools
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem asChild>
+                <Link href="/presentation/crawler" className="flex items-center">
+                  <Spider className="mr-2 h-4 w-4" />
+                  Web Crawler
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
 
         {/* Share button - Only in presentation page, not outline */}
         {isPresentationPage && !isPresenting && <ShareButton />}
